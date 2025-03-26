@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  spider_xhs:
+    build: .
+    container_name: spider_xhs
+    volumes:
+      - ./datas:/app/datas
+      - ./.env:/app/.env
+    environment:
+      - TZ=Asia/Shanghai
+    restart: unless-stopped
+    networks:
+      - spider_network
+
+networks:
+  spider_network:
+    driver: bridge 

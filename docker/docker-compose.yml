@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  xhs_collector:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: xhs_collector
+    volumes:
+      - ../data:/app/data
+      - ../logs:/app/logs
+    environment:
+      - TZ=Asia/Shanghai
+    restart: unless-stopped
+    networks:
+      - xhs_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: xhs_redis
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+    networks:
+      - xhs_network
+
+  mysql:
+    image: mysql:8.0
+    container_name: xhs_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-xhs_root_password}
+      MYSQL_DATABASE: xhs_db
+      MYSQL_USER: xhs_user
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-xhs_password}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+    networks:
+      - xhs_network
+
+  nginx:
+    image: nginx:alpine
+    container_name: xhs_nginx
+    volumes:
+      - ../nginx/conf.d:/etc/nginx/conf.d
+      - ../logs/nginx:/var/log/nginx
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    networks:
+      - xhs_network
+
+networks:
+  xhs_network:
+    driver: bridge
+
+volumes:
+  redis_data:
+  mysql_data: 
