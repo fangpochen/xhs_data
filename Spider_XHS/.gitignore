@@ -1,5 +1,7 @@
-__pycache__
-node_modules/
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
 *.so
 .Python
 build/
@@ -14,20 +16,49 @@ parts/
 sdist/
 var/
 wheels/
-MANIFEST
-*.manifest
-*.spec
-.cache
-*.log
-local_settings.py
-db.sqlite3
-__pypackages__/
-.venv
-env/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 虚拟环境
 venv/
 ENV/
-env.bak/
-venv.bak/
+env/
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+*.bak
+
+# 项目特定
+datas/*
+!datas/.gitkeep
+logs/*
+!logs/.gitkeep
+*.log
+node_modules/
+.DS_Store
+
+# 测试
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+
+# 其他
+*.bak
+*.tmp
+*.temp
+.env.local
+.env.*.local
 
 datas/excel_datas/67a332a2000000000d008358.xlsx
 datas/excel_datas/榴莲.xlsx
@@ -56,9 +87,9 @@ datas/media_datas/hr入职资料分析_67a332a2000000000d008358/拿到offer入�
 datas/media_datas/hr入职资料分析_67a332a2000000000d008358/收到offer有空窗期，虚报了。怎么办？_67a4a55a000000001701d87e/detail.txt
 datas/media_datas/hr入职资料分析_67a332a2000000000d008358/收到offer有空窗期，虚报了。怎么办？_67a4a55a000000001701d87e/image_0.jpg
 datas/media_datas/hr入职资料分析_67a332a2000000000d008358/收到offer有空窗期，虚报了。怎么办？_67a4a55a000000001701d87e/info.json
-datas/media_datas/hr入职资料分析_67a332a2000000000d008358/背调拿到offer，给我入职人事跟我要“礼”_67c933fc000000000b015782/detail.txt
-datas/media_datas/hr入职资料分析_67a332a2000000000d008358/背调拿到offer，给我入职人事跟我要“礼”_67c933fc000000000b015782/image_0.jpg
-datas/media_datas/hr入职资料分析_67a332a2000000000d008358/背调拿到offer，给我入职人事跟我要“礼”_67c933fc000000000b015782/info.json
+datas/media_datas/hr入职资料分析_67a332a2000000000d008358/背调拿到offer，给我入职人事跟我要"礼"_67c933fc000000000b015782/detail.txt
+datas/media_datas/hr入职资料分析_67a332a2000000000d008358/背调拿到offer，给我入职人事跟我要"礼"_67c933fc000000000b015782/image_0.jpg
+datas/media_datas/hr入职资料分析_67a332a2000000000d008358/背调拿到offer，给我入职人事跟我要"礼"_67c933fc000000000b015782/info.json
 datas/media_datas/hr入职资料分析_67a332a2000000000d008358/虚报了，谈薪资时要提供个税截图，别慌张_67d7c713000000000900e391/detail.txt
 datas/media_datas/hr入职资料分析_67a332a2000000000d008358/虚报了，谈薪资时要提供个税截图，别慌张_67d7c713000000000900e391/image_0.jpg
 datas/media_datas/hr入职资料分析_67a332a2000000000d008358/虚报了，谈薪资时要提供个税截图，别慌张_67d7c713000000000900e391/info.json

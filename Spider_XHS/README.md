@@ -1,3 +1,116 @@
+# Spider_XHS 小红书数据采集系统
+
+## 项目简介
+基于Python 3.12的小红书数据采集系统，专注于维权退保领域的数据采集、分析和处理。
+
+## 功能特点
+- 🔍 支持关键词搜索采集
+- 📊 支持用户笔记批量采集
+- 🔄 支持多账号Cookie管理
+- 💾 数据本地化存储
+- 📝 支持数据导出Excel
+- 🎯 支持定向采集过滤
+- 🛡️ 支持代理IP配置
+
+## 环境要求
+- Python 3.12+
+- Node.js
+- Docker (可选，用于容器化部署)
+
+## 快速开始
+
+### 本地运行
+```bash
+# 克隆项目
+git clone https://github.com/your-username/Spider_XHS.git
+cd Spider_XHS
+
+# 安装依赖
+pip install -r requirements.txt
+npm install
+
+# 配置环境变量
+cp .env.example .env
+# 编辑 .env 文件，填入必要配置
+
+# 运行程序
+python main.py
+```
+
+### Docker运行
+```bash
+# 构建镜像
+docker build -t spider_xhs .
+
+# 运行容器
+docker run -it -v $(pwd)/datas:/app/datas spider_xhs
+```
+
+## 配置说明
+在 `.env` 文件中配置以下参数：
+```env
+# Cookie配置（可选）
+COOKIE=your_cookie_here
+
+# 代理配置（可选）
+PROXY=your_proxy_here
+
+# 其他配置
+...
+```
+
+## 使用示例
+```python
+from apis.pc_apis import XHS_Apis
+
+# 初始化API
+xhs_apis = XHS_Apis()
+
+# 采集笔记信息
+notes = [
+    'https://www.xiaohongshu.com/explore/example1',
+    'https://www.xiaohongshu.com/explore/example2'
+]
+
+# 批量采集
+for note_url in notes:
+    success, msg, note_info = xhs_apis.get_note_info(note_url, cookies_str, proxies)
+    if success:
+        print(f"采集成功: {note_info}")
+```
+
+## 项目结构
+```
+Spider_XHS/
+├── apis/               # API接口
+├── xhs_utils/         # 工具函数
+├── datas/             # 数据存储
+├── tests/             # 测试文件
+├── static/            # 静态资源
+├── main.py            # 主程序
+└── requirements.txt   # 依赖配置
+```
+
+## CI/CD
+项目使用GitHub Actions进行自动化部署，支持：
+- 自动运行测试
+- 自动构建Docker镜像
+- 自动部署到服务器
+
+## 注意事项
+1. 遵守小红书平台规则
+2. 合理控制采集频率
+3. 注意数据安全存储
+4. 定期维护Cookie有效性
+
+## 更新日志
+- 2024-03-26: 添加CI/CD支持
+- 2024-03-25: 升级Python版本至3.12
+- 待补充...
+
+## License
+MIT License
+
 # 🎀Spider_XHS
 
 **✨ 专业的小红书数据采集解决方案，支持笔记爬取，保存格式为excel或者media**
